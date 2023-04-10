@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block content %}
+	<form method="POST"> 
+      <h3 align="center" style="color:black">Sign Up</h3> 
+      <div class="form-group"> 
+        <input 
+          type="userid" 
+          class="form-control" 
+          id="userid" 
+          name="userid" 
+          placeholder="Enter userid" 
+        /> 
+      </div> 
+      <div class="form-group">  
+        <input 
+          type="password" 
+          class="form-control" 
+          id="password" 
+          name="password" 
+          placeholder="Password" 
+        /> 
+      </div> 
+      <br /> 
+      <button type="submit" class="btn btn-primary">Submit</button> 
+      <small class="text-muted">
+		    Already a member? <a class="ml-2" href="{{ url_for('login') }}">Login</a>
+	  </small>
+    </form>
+{% endblock %}
+

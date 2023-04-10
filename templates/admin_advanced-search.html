@@ -1,0 +1,48 @@
+{% extends "admin_layout.html" %}
+
+{% block title %}
+Adv Search
+{% endblock %}
+
+{% block content %}
+	<body>
+		<div>
+			<form method="POST" id = "form1">
+		      <input type="text" placeholder="Search author" name="author">
+		      <input type="text" placeholder="Search category" name="category">
+		      <input type="text" placeholder="Search year" name="yop">
+		      <button type="submit" ><i class="fa fa-search">Advanced Search</i></button>
+		    </form>
+	    </div>
+	</body>
+
+	<table class="table table-hover table-stripped table-borderless">
+	    <thead class="thead-dark">
+	    <tr>
+	      <th>Book ID</th>
+	      <th>Book Title</th>
+	      <th>Borrow Status</th>
+	      <th>Due Date</th>
+	      <th>Operation</th>
+	    </tr>
+
+	    {% for book in final_result %}
+	      <tr>
+	        <td>{{ book[0] }}</td>
+	        <td>{{ book[1] }}</td>
+	        <td>{{ book[2] }}</td>
+	        <td>{{ book[3] }} </td>
+	        <td>
+	        	<form method="POST" id="form2">
+                	{% if book[2] == False %}
+                  		<button type="submit" name="search_borrow" value={{book[0]}}>Borrow</button>
+                	{% else %}
+                  		<button type="submit" name="search_reserve" value={{book[0]}}>Reserve</button>
+                	{% endif %}
+          		</form>
+	        </td>
+	      </tr>
+	    {% endfor %}
+
+	</table>
+{% endblock %}

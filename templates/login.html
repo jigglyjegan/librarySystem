@@ -1,0 +1,39 @@
+{% extends "base.html" %}-
+<!--{% import "bootstrap/wtf.html" as wtf %}-->
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+	<form method="POST">
+      <h3 align="center" style="color:black">Login</h3>
+      <div class="form-group">
+        <input
+          type="userid"
+          class="form-control"
+          id="userid"
+          name="userid"
+          placeholder="USERID"
+          size="20"
+          style="width:1200px"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="PASSWORD"
+          size="20"
+          style="width:1200px"
+        />
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary">Login</button>
+      <small class="text-muted">
+        Not a member? <a class="ml-2" href="{{ url_for('signup') }}">Sign Up Now!</a>
+      </small>
+  
+{% endblock %}

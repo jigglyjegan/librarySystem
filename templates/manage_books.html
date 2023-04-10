@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Manage Books
+{% endblock %}
+
+{% block content %}
+	<h2>Your borrowed books</h2>
+	<div class="container">
+		<table class="table table-hover table-stripped table-borderless">
+		    <thead class="thead-dark">
+		    <tr>
+			  <th>Book ID</th>
+		      <th>Title</th>
+		      <th>Borrow Date</th>
+		      <th>Due Date</th>
+		      <th>Operation</th>
+		    </tr>
+
+		    {% for book in borrowed %}
+		      <tr>
+		        <td>{{ book[0] }}</td>
+		        <td>{{ book[1] }}</td>
+		        <td>{{ book[2] }}</td>
+		        <td>{{ book[3] }} </td>
+		        <td>
+		        	<form method="POST" id="form1">
+			      		<button type="submit" name="return_button" value={{book[0]}}>Return</button>
+			      		<button type="submit" name="extend_button" value={{book[0]}}>Extend</button>
+			    	</form>
+				</td>
+		      </tr>
+		    {% endfor %}
+		</table>
+	</div>
+
+	<h2>Your reserved books</h2>
+	<div class="container">
+		<table class="table table-hover table-stripped table-borderless">
+		    <thead class="thead-dark">
+		    <tr>
+			  <th>Book ID</th>
+		      <th>Title</th>
+		      <th>Reserve Date</th>
+		      <th>Borrow Status</th>
+		      <th>Operation</th>
+		    </tr>
+
+		    {% for book in reserved %}
+		      <tr>
+		        <td>{{ book[0] }}</td>
+		        <td>{{ book[1] }}</td>
+		        <td>{{ book[2] }}</td>
+		        <td>
+		        	<form method="POST" id="form2">
+			      		<button type="submit" name="change_button" value={{book[0]}}>Borrow</button>
+			      		<button type="submit" name="cancel_button" value={{book[0]}}>Cancel</button>
+			      	</form>
+				</td>
+		      </tr>
+		    {% endfor %}
+		</table>
+	</div>
+
+{% endblock %}

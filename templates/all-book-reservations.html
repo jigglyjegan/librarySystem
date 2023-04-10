@@ -1,0 +1,28 @@
+{% extends "admin_layout.html" %}
+
+{% block title %}
+All Book Reservations
+{% endblock %}
+
+{% block content %}
+
+  <table class="table table-hover table-stripped table-borderless">
+    <thead class="thead-dark">
+    <tr>
+	  <th>Book Id</th>
+      <th>Title</th>
+      <th>Reserved Date</th>
+      <th>User Id</th>
+    </tr>
+
+    {% for k in list %}
+      <tr>
+        <td>{{ k[0] }}</td>
+        <td>{{ k[1] }}</td>
+        <td>{{ k[2] }}</td>
+        <td>{{ k[3] }} </td>
+      </tr>
+    {% endfor %}
+
+  </table>
+{% endblock %}

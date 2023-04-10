@@ -1,0 +1,25 @@
+{% extends "admin_layout.html" %}
+
+{% block title %}
+All Users with Unpaid fines
+{% endblock %}
+
+{% block content %}
+
+  <table class="table table-hover table-stripped table-borderless">
+    <thead class="thead-dark">
+    <tr>
+	  <th>User Id</th>
+      <th>Fine Amount</th>
+
+    </tr>
+
+    {% for k in list %}
+      <tr>
+        <td>{{ k[0] }}</td>
+        <td>{{ k[1] }}</td>
+      </tr>
+    {% endfor %}
+
+  </table>
+{% endblock %}

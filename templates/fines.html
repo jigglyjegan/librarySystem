@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Fine Payment
+{% endblock %}
+
+{% block content %}
+  {% if has_expired_books %}
+    <div class="jumbotron">
+        <h1 class="display-3">Late Fee Payment</h1>
+        <p class="lead">Your late fee total: ${{total}}</p>
+        <p> Please return all the expired books </p>
+    </div>
+     <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const checkout_public_key = '{{checkout_public_key}}';
+        const checkout_session_id = '{{checkout_session_id}}';
+      </script>
+      <script src="{{ url_for('static', filename='script-ajax.js') }}"></script>
+  {% elif total > 0 %}
+    <div class="jumbotron">
+        <h1 class="display-3">Late Fee Payment</h1>
+        <p class="lead">Your late fee total: ${{total}}</p>
+        <a href="#" id="buy_now_btn" class="btn btn-primary">Pay Now</a>
+    </div>
+     <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const checkout_public_key = '{{checkout_public_key}}';
+        const checkout_session_id = '{{checkout_session_id}}';
+      </script>
+      <script src="{{ url_for('static', filename='script-ajax.js') }}"></script>
+  {% else %}
+    <div class="jumbotron">
+        <h1 class="display-3">Late Fee Payment</h1>
+        <p class="lead">Your late fee total: ${{total}}</p>
+    </div>
+     <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const checkout_public_key = '{{checkout_public_key}}';
+        const checkout_session_id = '{{checkout_session_id}}';
+      </script>
+      <script src="{{ url_for('static', filename='script-ajax.js') }}"></script>
+  {% endif %}
+
+{% endblock %}
